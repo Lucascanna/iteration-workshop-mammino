@@ -17,7 +17,7 @@
   }
   ```
 
-  Return the names of the athletes who hav ewon at least 3 medals.
+  Return the names of the athletes who have won at least 3 medals.
   For the above example the result should be:
 
   ```
@@ -35,6 +35,11 @@
  */
 export default function champions (athletes) {
   const wonAtLeast3Medals = []
-  // write your logic here
+  for (const [athleteName, { gold, silver, bronze }] of Object.entries(athletes)) {
+    const numOfWonMedals = gold + silver + bronze
+    if (numOfWonMedals >= 3) {
+      wonAtLeast3Medals.push(athleteName)
+    }
+  }
   return wonAtLeast3Medals
 }

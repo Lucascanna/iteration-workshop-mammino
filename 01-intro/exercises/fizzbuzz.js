@@ -37,5 +37,24 @@
 export default function fizzBuzz (limit) {
   const seq = []
   // Write your implementation here. Fill `seq` based on limit
+  for (let number = 1; number <= limit; number++) {
+    const isDivisibleBy3 = number % 3 === 0
+    const isDivisibleBy5 = number % 5 === 0
+    if (isDivisibleBy3 && isDivisibleBy5) {
+      seq.push('Fizz Buzz')
+      continue
+    }
+    if (isDivisibleBy3) {
+      seq.push('Fizz')
+      continue
+    }
+    if (isDivisibleBy5) {
+      seq.push('Buzz')
+      continue
+    }
+    seq.push(number)
+  }
   return seq
 }
+
+

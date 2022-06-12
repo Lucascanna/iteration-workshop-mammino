@@ -37,4 +37,7 @@ export default function * take (n, iterable) {
   // `yield` correctly...
   //
   // Write your code here!
+  for (let iteration = 0; iteration < n; iteration++) {
+    yield iterable.next().value
+  }
 }

@@ -23,20 +23,59 @@
 */
 
 export function createEmojiIter (text) {
-  // write your code here
+  const arrayUnicode = Array.from(text)
+  let index = 0
+  return {
+    next () {
+      for (; index < arrayUnicode.length; index++) {
+        if (arrayUnicode[index].match(/\p{Emoji}/u) !== null) {
+          const value = arrayUnicode[index]
+          index++
+          return {
+            value,
+            done: false
+          }
+        }
+      }
+      return {
+        value: undefined,
+        done: true
+      }
+    }
+  }
 }
 
 export class EmojiIter {
   constructor (text) {
     this.chars = Array.from(text)
+    this.index = 0
     // write your code here
   }
 
   next () {
     // write your code here
+    for (this.index; this.index < this.chars.length; this.index++) {
+      if (this.chars[this.index].match(/\p{Emoji}/u) !== null) {
+        const value = this.chars[this.index]
+        this.index++
+        return {
+          value,
+          done: false
+        }
+      }
+    }
+    return {
+      value: undefined,
+      done: true
+    }
   }
 }
 
 export function * emojiIterGen (text) {
   // write your code here
+  for (const unicodeChar of text) {
+    if (unicodeChar.match(/\p{Emoji}/u) !== null) {
+      yield unicodeChar
+    }
+  }
 }
